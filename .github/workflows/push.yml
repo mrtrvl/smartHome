@@ -11,12 +11,4 @@ jobs:
         run: docker build . --file ./backend/Dockerfile --tag mrtrvl/smarthomeback
       - name: docker build
         run: docker build . --file ./nginx/Dockerfile --tag mrtrvl/smarthomenginx
-      - name: docker login
-        uses: actions/docker/login@master
-        env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      - name: docker push
-        uses: actions/docker/cli@master
-        with:
-          args: push mrtrvl/smarthome
+
