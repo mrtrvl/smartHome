@@ -6,13 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: docker build
-        uses: actions/checkout@v3
         run: docker build . --file ./frontend/Dockerfile --tag mrtrvl/smarthomefront
       - name: docker build
-        uses: actions/checkout@v3
         run: docker build . --file ./backend/Dockerfile --tag mrtrvl/smarthomeback
       - name: docker build
-        uses: actions/checkout@v3
         run: docker build . --file ./nginx/Dockerfile --tag mrtrvl/smarthomenginx
       - name: docker login
         uses: actions/docker/login@master
