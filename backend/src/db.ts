@@ -2,15 +2,24 @@
 /* eslint-disable import/extensions */
 import IDevice from './devices/interfaces';
 import ISensor from './sensors/interfaces';
+import IPlace from './places/interfaces';
 import { IReading } from './readings/interfaces';
 
 interface IDb {
+  places: IPlace[];
   devices: IDevice[];
   sensors: ISensor[];
   readings: IReading[];
 }
 
 const db: IDb = {
+  places: [
+    {
+      id: 1,
+      name: 'Saaremaa suvila',
+      address: 'Pahapilli küla, Saaremaa',
+    },
+  ],
   devices: [
     {
       id: 1,
