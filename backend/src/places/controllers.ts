@@ -14,14 +14,14 @@ placesController.getAll = (req: Request, res: Response) => {
   });
 };
 
-placesController.getById = (req: Request, res: Response) => {
+placesController.getById = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
-  const place = placesService.getById(id);
-  const placeDevices = devicesService.getByPlaceId(id);
+  const place = await placesService.getById(id);
+  const placeDevices = await devicesService.getByPlaceId(id);
   return res.status(200).json({
     success: true,
     data: {
-      ...place,
+      place,
       devices: placeDevices,
     },
   });
