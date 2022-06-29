@@ -24,6 +24,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: backend/.
-          file: ./Dockerfile
+          file: ./backend/Dockerfile
           push: true
-          tags: mrtrvl/smartback:latest  
+          tags: mrtrvl/smartback:latest
