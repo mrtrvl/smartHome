@@ -14,9 +14,9 @@ sensorsController.getAll = (req: Request, res: Response) => {
   });
 };
 
-sensorsController.getReadings = (req: Request, res: Response) => {
+sensorsController.getReadings = async (req: Request, res: Response) => {
   const sensorId = Number(req.params.id);
-  const readings = readingService.getBySensorId(sensorId);
+  const readings = await readingService.getBySensorId(sensorId);
   return res.status(200).json({
     success: true,
     data: readings,
