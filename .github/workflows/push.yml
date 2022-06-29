@@ -21,7 +21,7 @@ jobs:
         name: |
           Test backend    
         run: npm test
-         working-directory: ./backend
+        working-directory: ./backend
       -
         name: Checkout 
         uses: actions/checkout@v2
