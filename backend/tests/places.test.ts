@@ -37,5 +37,17 @@ describe('Places controller', () => {
       expect(response.body.data.devices).to.be.a('array');
       expect(response.body.data.devices.length).to.be.greaterThan(0);
     });
+    it('responds with error message and status 400 due to nonexisting place', async () => {
+      const placeId = 9999;
+      const response = await request(app).get(`/places/${placeId}`);
+      expect(response.body).to.be.a('object');
+      expect(response.statusCode).to.equal(400);
+      expect(response.body).to.have.property('success');
+      expect(response.body.success).to.be.a('boolean');
+      expect(response.body.success).to.equal(false);
+      expect(response.body).to.have.property('message');
+      expect(response.body.message).to.be.a('string');
+      expect(response.body.message).to.equal(`No place found with id: ${placeId}`);
+    });
   });
 });

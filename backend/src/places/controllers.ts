@@ -15,16 +15,23 @@ placesController.getAll = (req: Request, res: Response) => {
 };
 
 placesController.getById = async (req: Request, res: Response) => {
-  const id = Number(req.params.id);
-  const place = await placesService.getById(id);
-  const placeDevices = await devicesService.getByPlaceId(id);
-  return res.status(200).json({
-    success: true,
-    data: {
-      place,
-      devices: placeDevices,
-    },
-  });
+  try {
+    const id = Number(req.params.id);
+    const place = await placesService.getById(id);
+    if (!place) throw new Error(`No place found with id: ${id}`);
+    const placeDevices = await devicesService.getByPlaceId(id);
+    return res.status(200).json({
+      success: true,
+      data: {
+        place,
+        devices: placeDevices,
+      },
+    });
+  } catch (error: any) {
+    return res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
 };
-
 export default placesController;
