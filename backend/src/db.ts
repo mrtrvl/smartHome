@@ -14,21 +14,26 @@ const db: IDb = {
   devices: [
     {
       id: 1,
-      name: 'Haapsalu kodu',
+      name: 'Haapsalu veranda',
+      placeId: 1,
+    },
+    {
+      id: 2,
+      name: 'Haapsalu pööning',
       placeId: 1,
     },
   ],
   sensors: [
     {
       id: 1,
-      name: 'Veranda',
+      name: 'Temperatuur',
       type: 'temperature',
       units: 'C',
       deviceId: 1,
     },
     {
       id: 2,
-      name: 'Pööning',
+      name: 'Temperatuur',
       type: 'temperature',
       units: 'C',
       deviceId: 1,
