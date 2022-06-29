@@ -16,7 +16,7 @@ describe('Devices controller', () => {
       expect(response.body.success).to.equal(true);
       expect(response.body).to.have.property('data');
       expect(response.body.data).to.be.a('array');
-      expect(response.body.data.length).to.be.greaterThan(3);
+      expect(response.body.data.length).to.be.greaterThan(0);
     });
   });
 });

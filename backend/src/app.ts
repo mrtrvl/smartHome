@@ -7,14 +7,15 @@ import devicesController from './devices/controllers';
 import placesController from './places/controllers';
 import sensorsController from './sensors/controllers';
 import readingsController from './readings/controllers';
+import logger from './middlewares/logger';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(logger);
 
 app.get('/', (req: Request, res: Response) => {
-  console.log(req.url);
   res.status(200).json({
     success: true,
     data: 'Alive',
