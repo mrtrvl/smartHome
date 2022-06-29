@@ -23,7 +23,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: frontend/.
+          context: backend/.
           file: ./Dockerfile
           push: true
-          tags: mrtrvl/smarthomefront:latest  
+          tags: mrtrvl/smartback:latest  
