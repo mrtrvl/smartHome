@@ -9,18 +9,12 @@ jobs:
     steps:
       - 
         name: Prepare backend
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-      -
-        name: Install node dependencies
-        run: | 
-          npm install
+        uses: actions/checkout@v2
+      - name: Install node dependencies
+        run: npm install
         working-directory: backend
-      - 
-        name: Test backend    
-        run: | 
-          npm test
+      - name: Test backend    
+        run: npm test
         working-directory: backend
       -
         name: Checkout 
