@@ -27,3 +27,11 @@ jobs:
           file: ./backend/Dockerfile
           push: true
           tags: mrtrvl/smartback:latest
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: frontend/.
+          file: ./frontend/Dockerfile
+          push: true
+          tags: mrtrvl/smartfront:latest
