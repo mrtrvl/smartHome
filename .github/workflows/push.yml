@@ -18,9 +18,9 @@ jobs:
           npm install
         working-directory: backend
       - 
-        name: |
-          Test backend    
-        run: npm test
+        name: Test backend    
+        run: | 
+          npm test
         working-directory: backend
       -
         name: Checkout 
