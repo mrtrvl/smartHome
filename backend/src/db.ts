@@ -3,13 +3,11 @@
 import IDevice from './devices/interfaces';
 import ISensor from './sensors/interfaces';
 import IPlace from './places/interfaces';
-import { IReading } from './readings/interfaces';
 
 interface IDb {
   places: IPlace[];
   devices: IDevice[];
   sensors: ISensor[];
-  readings: IReading[];
 }
 
 const db: IDb = {
@@ -39,17 +37,16 @@ const db: IDb = {
       type: 'temperature',
       units: 'C',
       deviceId: 1,
+      readings: [],
     },
     {
       id: 2,
       name: 'Temperatuur',
       type: 'temperature',
       units: 'C',
-      deviceId: 1,
+      deviceId: 2,
+      readings: [],
     },
-  ],
-  readings: [
-
   ],
 };
 

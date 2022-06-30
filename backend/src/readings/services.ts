@@ -2,26 +2,32 @@
 /* eslint-disable import/no-unresolved */
 import { IReading, INewReading } from './interfaces';
 import db from '../db';
+import ISensor from '../sensors/interfaces';
 
-const readingService: any = {};
+const maxItemsInDatabase = 144; // 10 minute intervals in 24 hours
 
-readingService.getBySensorId = async (sensorId: number): Promise<IReading[]> => {
-  const sensorsReadings = await db.readings.filter((element) => element.sensorId === sensorId);
+const readingsService: any = {};
+
+readingsService.getBySensorId = async (sensorId: number): Promise<IReading[]> => {
+  const sensorIndex = db.sensors.findIndex((sensor) => sensor.id === sensorId);
+  const sensorsReadings = await db.sensors[sensorIndex]
+    .readings.filter((element) => element.sensorId === sensorId);
   return sensorsReadings;
 };
 
-readingService.getAll = async (): Promise<IReading[]> => {
-  const { readings } = db;
-  return readings;
-};
+readingsService.getAll = async (): Promise<ISensor[]> => db.sensors;
 
-readingService.add = async (reading: INewReading): Promise<boolean> => {
+readingsService.add = async (reading: INewReading): Promise<boolean> => {
   const newReading: IReading = {
     ...reading,
     date: new Date(),
   };
-  db.readings.push(newReading);
+  const sensorIndex = db.sensors.findIndex((sensor) => sensor.id === reading.sensorId);
+  db.sensors[sensorIndex].readings.push(newReading);
+  if (db.sensors[sensorIndex].readings.length > maxItemsInDatabase) {
+    db.sensors[sensorIndex].readings.shift();
+  }
   return true;
 };
 
-export default readingService;
+export default readingsService;

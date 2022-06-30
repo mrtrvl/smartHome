@@ -4,7 +4,7 @@
 import { Request, Response } from 'express';
 import sensorsService from '../sensors/services';
 import { INewReading } from './interfaces';
-import readingService from './services';
+import readingsService from './services';
 
 const readingsController: any = {};
 
@@ -13,14 +13,14 @@ readingsController.add = async (req: Request, res: Response) => {
   readings.forEach(async (reading: INewReading) => {
     const sensor = await sensorsService.getById(reading.sensorId);
     console.log(`Sensors: ${sensor.name} reading: ${reading.reading}, time: ${new Date()}`);
-    await readingService.add(reading);
+    await readingsService.add(reading);
   });
   const action = { actuatorId: 1, state: false };
   return res.status(200).json(action);
 };
 
 readingsController.getaAll = async (req: Request, res: Response) => {
-  const readings = await readingService.getAll();
+  const readings = await readingsService.getAll();
   return res.status(200).json({
     success: true,
     data: readings,
