@@ -23,12 +23,12 @@ const db: IDb = {
   devices: [
     {
       id: 1,
-      name: 'Haapsalu veranda',
+      name: 'Teine korrus',
       placeId: 1,
     },
     {
       id: 2,
-      name: 'Haapsalu pööning',
+      name: 'Esimene korrus',
       placeId: 1,
     },
   ],
