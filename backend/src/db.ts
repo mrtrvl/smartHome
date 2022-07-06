@@ -17,6 +17,11 @@ const db: IDb = {
       name: 'Saaremaa suvila',
       address: 'Pahapilli küla, Saaremaa',
     },
+    {
+      id: 2,
+      name: 'Haapsalu kodu',
+      address: 'Haapsalu',
+    },
   ],
   devices: [
     {
@@ -26,8 +31,8 @@ const db: IDb = {
     },
     {
       id: 2,
-      name: 'Esimene korrus',
-      placeId: 1,
+      name: 'Veranda',
+      placeId: 2,
     },
   ],
   sensors: [
