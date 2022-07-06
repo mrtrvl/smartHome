@@ -34,6 +34,11 @@ const db: IDb = {
       name: 'Veranda',
       placeId: 2,
     },
+    {
+      id: 3,
+      name: 'Test',
+      placeId: 2,
+    },
   ],
   sensors: [
     {
@@ -50,6 +55,14 @@ const db: IDb = {
       type: 'temperature',
       units: 'C',
       deviceId: 2,
+      readings: [],
+    },
+    {
+      id: 3,
+      name: 'Temperatuur',
+      type: 'temperature',
+      units: 'C',
+      deviceId: 3,
       readings: [],
     },
   ],
